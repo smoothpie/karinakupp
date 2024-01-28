@@ -11,6 +11,7 @@ export default function Navbar() {
       </Link>
       <div className={styles.links}>
         <Link href="/about">About</Link>
+        <Link href="/blog">Blog</Link>
         {/* <Link href="/dump">Brain dump</Link> */}
         <Link href="/projects">Projects // Dev</Link>
         {/* <Link href="/music">Music</Link>

@@ -1,12 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SEO from '@/components/SEO'
 import styles from '@/styles/About.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
 
 // structuring data like a pro, leading social media like a lame cave person.
 
