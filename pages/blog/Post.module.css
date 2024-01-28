@@ -27,6 +27,7 @@
 
 .post header h1 {
   font-size: 56px;
+  text-align: center;
 }
 
 .postDate {
@@ -48,62 +49,33 @@
   color: #333;
 }
 
-.description {
-  margin: 0.5rem 0;
-}
-
-.categorySwitch {
-  display: flex;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.category {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid #333;
-  border-radius: 4px;
-}
-
-.category:hover {
-  cursor: pointer;
-  background-color: #333;
-  color: #fff;
-}
-
-.categorySelected {
-  background-color: #333;
-  color: #fff;
-}
-
-.category span {
-
-}
-
 @media (max-width: 1024px) {
-  .main {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    margin-top: 3rem;
-    min-height: auto;
-    height: 70vh;
+  .post header h1 {
+    font-size: 44px;
   }
-
-  .header {
-    margin: 0;
-    margin-bottom: 1rem;
+  .content {
+    max-width: 100%;
   }
-
-  .projects {
-    width: 100%;
+  .content p {
+    font-size: 18px;
+    line-height: 28px;
   }
 }
 
 @media (max-width: 600px) {
   .main {
+    margin-top: 2rem;
+    padding: 1rem 1rem 4rem;
+  }
+  .post header h1 {
+    font-size: 36px;
+  }
+  .cover {
     margin-top: 1rem;
-    padding: 1rem;
+    width: 100%;
+    height: 50vw;
+  }
+  .content {
+    margin-top: 3rem;
   }
 }
