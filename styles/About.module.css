@@ -25,3 +25,29 @@
   line-height: 1.25;
   color: grey;
 }
+
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    margin-top: 3rem;
+    min-height: auto;
+    height: 70vh;
+  }
+
+  .header {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .projects {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+}
