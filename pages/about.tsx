@@ -4,13 +4,13 @@ import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SEO from '@/components/SEO'
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/About.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 // structuring data like a pro, leading social media like a lame cave person.
 
-export default function Home() {
+export default function About() {
   return (
     <>
       <SEO

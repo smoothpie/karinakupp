@@ -33,7 +33,7 @@ export const A = (props: AProps) => {
       replace={props.replace}
       passHref={props.passHref}
     >
-      <ExtA {...props} />
+      {props.children}
     </Link>
   );
 }

@@ -29,3 +29,9 @@
     padding: 1rem;
   }
 }
+
+@media (max-width: 600px) {
+  .logo {
+    max-width: 10rem;
+  }
+}

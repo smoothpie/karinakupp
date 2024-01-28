@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 2rem;
+  min-height: calc(100vh - 100px);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: -13rem;
+  margin-left: 15rem;
+}
+
+.description {
+  margin: 0.5rem 0;
+}
+
+.smallText {
+  max-width: 33rem;
+  font-size: 0.9rem;
+  line-height: 1.25;
+  color: grey;
+}
