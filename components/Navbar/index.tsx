@@ -1,7 +1,22 @@
+import { useState, useEffect } from 'react'
 import Link from '@/components/Link'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isBurgerMenuOpen) {
+      document.body.style.height = '100vh';
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.height = 'unset';
+      document.body.style.overflowY = 'unset';
+    }
+  }, [isBurgerMenuOpen]);
+
+  console.log(isBurgerMenuOpen)
+
   return (
     <nav className={styles.container}>
       <Link href="/">
@@ -21,7 +36,7 @@ export default function Navbar() {
       </div>
 
       <div className={styles.burgerMenuContainer}>
-        <input type="checkbox" />
+        <input type="checkbox" onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)} />
         
         <span></span>
         <span></span>

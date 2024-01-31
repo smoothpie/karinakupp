@@ -125,12 +125,12 @@
  * at the top left of the screen
  */
 .burgerMenu {
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: 100vh;
   margin-top: -52px;
   padding: 40px 40px;
-  right: 0;
+  right: -3.9vw;
 
   background: #222;
   /* background-color: #fff;; */
