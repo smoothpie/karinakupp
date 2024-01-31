@@ -42,7 +42,7 @@
   font-family: "Source Serif Pro", serif;
 }
 
-.content p {
+.content p, .content li {
   margin: 2rem 0;
   font-size: 20px;
   line-height: 32px;

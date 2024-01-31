@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
 import post1 from '@/data/blog/1-why-am-i-doing-this';
+import post2 from '@/data/blog/2-google-sheets-tutorial';
 import styles from './Blog.module.css'
 
 const categories = [
@@ -19,6 +20,7 @@ const categories = [
 ];
 
 export const posts = [
+  post2,
   post1,
 ];
 
@@ -35,6 +37,22 @@ export default function Blog() {
     const postsInCategory = posts.filter(post => post.postPreview.type === category.value);
     return { category: category.value, count: postsInCategory.length };
   })
+
+  const EntryCard = ({ post }: any) => (
+    <article className={styles.card}>
+      <div className={styles.cardImage}>
+        <Image src={post.postPreview.cover} fill alt={`Post cover: ${post.postPreview.title}`} />
+      </div>
+      <div className={styles.cardInfo}>
+        <div className={styles.cardInfoTop}>
+          <div className={styles.cardDate}>{post.postPreview.date}</div>
+          {/* <div className={styles.infoDivider}>|</div>
+          <div className={styles.cardAuthor}>Karina Kupp</div> */}
+        </div>
+        <h2 className={styles.cardTitle}>{post.postPreview.titleDiv || post.postPreview.title}</h2>
+      </div>
+    </article>
+  )
 
   return (
     <>
@@ -68,21 +86,15 @@ export default function Blog() {
 
         <div className={styles.cards}>
           {filteredPosts.map(post => (
-            <Link href={`/blog/${post.postPreview.slug}`} key={post.postPreview.slug} aria-label={post.postPreview.title}>
-              <article className={styles.card}>
-                <div className={styles.cardImage}>
-                  <Image src={post.postPreview.cover} fill alt={`Post cover: ${post.postPreview.title}`} />
-                </div>
-                <div className={styles.cardInfo}>
-                  <div className={styles.cardInfoTop}>
-                    <div className={styles.cardDate}>{post.postPreview.date}</div>
-                    {/* <div className={styles.infoDivider}>|</div>
-                    <div className={styles.cardAuthor}>Karina Kupp</div> */}
-                  </div>
-                  <h2 className={styles.cardTitle}>{post.postPreview.titleDiv || post.postPreview.title}</h2>
-                </div>
-              </article>
-            </Link>
+            post.postPreview.slug.includes("https") ? (
+              <a href={post.postPreview.slug} key={post.postPreview.slug} aria-label={post.postPreview.title} target="_blank">
+                <EntryCard post={post} />
+              </a>
+            ) : (
+              <Link href={`/blog/${post.postPreview.slug}`} key={post.postPreview.slug} aria-label={post.postPreview.title}>
+                <EntryCard post={post} />
+              </Link>
+            )
           ))}
         </div>
       </main>
