@@ -74,10 +74,10 @@ export default function Navbar() {
         <span></span>
         
         <ul className={s.burgerMenu}>
-          <Link href="/"><li>Home</li></Link>
-          <Link href="/about"><li>About</li></Link>
-          <Link href="/blog"><li>Blog</li></Link>
-          <Link href="/projects"><li>Projects</li></Link>
+          <Link href="/"><li>{t("navbar.home")}</li></Link>
+          <Link href="/about"><li>{t("navbar.about")}</li></Link>
+          <Link href="/blog"><li>{t("navbar.blog")}</li></Link>
+          <Link href="/projects"><li>{t("navbar.projects")}</li></Link>
           <div className={s.languageSwitchContainer}>
             {languageSwitch}
           </div>
