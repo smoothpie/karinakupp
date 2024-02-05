@@ -50,7 +50,7 @@ const content = (
 
     <p>So that’s it! That’s the start.</p>
 
-    {/* <p>P.S. If you have friends who might be interested in various entrepreneurial/immigration/life notes, please share this with them! I’ll appreciate it.</p> */}
+    <p>P.S. If you have friends who might be interested in various entrepreneurial/immigration/life/music notes, please share this with them! I’ll appreciate it.</p>
   </>
 )
 

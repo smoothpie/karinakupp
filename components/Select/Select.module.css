@@ -1,0 +1,47 @@
+.container {
+  position: relative;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* background-color: #efefef; */
+  user-select: none;
+  cursor: pointer;
+}
+
+/* .label:hover {
+  opacity: 0.5;
+} */
+
+.label svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.labelOpen svg {
+  transform: rotate(180deg);
+  transition: all 0.3s ease;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 1.75rem;
+  left: -0.25rem;
+  padding: 0.25rem 0;
+  border: 1px solid #333;
+  /* background-color: #efefef; */
+}
+
+.option {
+  padding: 0.5rem 1rem;
+}
+
+.option:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

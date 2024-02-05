@@ -75,7 +75,8 @@
   margin-bottom: 5px;
   position: relative;
 
-  background: #333;
+  /* background: #333; */
+  background-color: #222;
   border-radius: 3px;
 
   z-index: 1;
@@ -102,7 +103,8 @@
 .burgerMenuContainer input:checked~span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #fff;
+  /* background: #fff; */
+  background-color: #222;
 }
 
 /*
@@ -129,11 +131,11 @@
   width: 100vw;
   height: 100vh;
   margin-top: -52px;
-  padding: 40px 40px;
+  padding: 32px;
   right: -3.9vw;
 
-  background: #222;
-  /* background-color: #fff;; */
+  /* background: #222; */
+  background-color: #fff;;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -147,7 +149,7 @@
 .burgerMenu li {
   padding: 10px 0;
   font-size: 20px;
-  color: #fff;
+  /* color: #fff; */
 }
 
 /*
@@ -155,6 +157,20 @@
  */
 .burgerMenuContainer input:checked~.burgerMenu {
   transform: none;
+}
+
+.languageSwitch {
+  margin-top: 1px;
+  padding: 0.5rem;
+  width: max-content;
+  border: 1px solid green;
+  border-radius: 9999px;
+  color: green;
+  cursor: pointer;
+}
+
+.languageSwitchContainer {
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 1024px) {

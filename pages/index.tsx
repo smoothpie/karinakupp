@@ -1,16 +1,32 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SEO from '@/components/SEO'
 import styles from '@/styles/Home.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin', ] })
 
 // structuring data like a pro, leading social media like a lame cave person.
 
+export async function getStaticProps(context: any) {
+  // extract the locale identifier from the URL
+  const { locale } = context
+
+  return {
+    props: {
+      // pass the translation props to the page component
+      ...(await serverSideTranslations(locale)),
+    },
+  }
+}
+
 export default function Home() {
+  const { t } = useTranslation()
+
   return (
     <>
       <SEO
@@ -28,11 +44,11 @@ export default function Home() {
             <Image src="/karinakupp.jpeg" alt="Karina Kupp" fill />
           </div>
           <div className={styles.info}>
-            <h1>Hi! I'm Karina. I build <a href="https://chillsubs.com/" target="_blank">Chill Subs</a>, <a href="https://open.spotify.com/artist/26gsov9eryBnS3qdUTsoWK?si=MYOTxnotTUKcwk9pJ7599A" target="_blank">write sad songs</a> and constantly brainstorm ideas <br/>I don't really have time for.</h1>
+            <h1 dangerouslySetInnerHTML={{ __html: t("home.title")}} />
             {/* <p className={styles.description}>Welcome to this fascinating aggregator of all my attempts not to waste my life.</p> */}
-            <p className={styles.description}>I'm a software engineer with 6 years of experience. I spent 3 years building mostly MVPs for startups at an outsourcing company, then left and did some freelance (like making a medical tourism platform...during a global pandemic), and in 2022, launched <a href="https://chillsubs.com/" target="_blank">Chill Subs</a> - a website helping writers get published that now has almost 20,000 registered users and is reimagining the writing industry every day.</p>
-            <p className={styles.description}>Now I'm trying to beat my impostor syndrom and share the things I've learned in my blog.</p>
-            <p className={styles.smallText}>// Sometimes, I look out the window and think that wasting one's life is impossible. It's here after all, it's yours, you're living it! Other times, I go on Twitter and every single person seems to be doing more than me. Then I get up and create a personal website. Then I think it's all stupid. //</p>
+            <p className={styles.description} dangerouslySetInnerHTML={{ __html: t("home.subtitle.part1")}} />
+            <p className={styles.description}>{t("home.subtitle.part2")}</p>
+            <p className={styles.smallText}>{t("home.smallText")}</p>
           </div>
         </section>
       </main>

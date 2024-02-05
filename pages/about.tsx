@@ -1,14 +1,29 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SEO from '@/components/SEO'
 import styles from '@/styles/About.module.css'
 
+export async function getStaticProps(context: any) {
+  // extract the locale identifier from the URL
+  const { locale } = context
+
+  return {
+    props: {
+      // pass the translation props to the page component
+      ...(await serverSideTranslations(locale)),
+    },
+  }
+}
 
 // structuring data like a pro, leading social media like a lame cave person.
 
 export default function About() {
+  const { t } = useTranslation()
+
   return (
     <>
       <SEO
@@ -22,9 +37,9 @@ export default function About() {
 
       <main className={styles.main}>
         <section className={styles.header}>
-          <h1>Helllooooo, can't wait to make this about me</h1>
-          <p className={styles.description}>I'm Karina. I write sad songs and build Chill Subs.</p>
-          <p className={styles.smallText}>You can typically find me creating yet another Spotify playlist, buying tickets to the other side of the world to see Carissa's Wierd reunion, or being angry I can't clone myself to work on 248582 ideas at the same time. Nice to meet you! Please be my friend and make me go outside.</p>
+          <h1>{t("about.title")}</h1>
+          <p className={styles.description} dangerouslySetInnerHTML={{ __html: t("about.subtitle") }} />
+          <p className={styles.smallText}>{t("about.bio")}</p>
         </section>
       </main>
 

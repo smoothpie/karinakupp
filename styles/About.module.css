@@ -20,6 +20,15 @@
   margin: 0.5rem 0;
 }
 
+.description a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.description a:hover {
+  opacity: 0.5;
+}
+
 .smallText {
   max-width: 33rem;
   font-size: 0.9rem;

@@ -1,33 +1,58 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
 import SEO from '@/components/SEO'
-import post1 from '@/data/blog/1-why-am-i-doing-this';
-import post2 from '@/data/blog/2-google-sheets-tutorial';
+import post1 from '@/data/blog/en/1-why-am-i-doing-this';
+import post1RU from '@/data/blog/ru/1-why-am-i-doing-this';
+import post2 from '@/data/blog/en/2-google-sheets-tutorial';
+import post2RU from '@/data/blog/ru/2-google-sheets-tutorial';
 import styles from './Blog.module.css'
 
-const categories = [
-  { value: 'all', title: 'All'},
-  { value: 'startups', title: 'Startups'},
-  { value: 'dev', title: 'Dev'},
-  // { value: 'immigration', title: 'Immigration'},
-  { value: 'lifeStuff', title: 'Life stuff'},
-  { value: 'projects', title: 'My old projects'},
-  { value: 'other', title: 'Other'},
-];
-
-export const posts = [
+export const enPosts = [
   post2,
   post1,
 ];
 
+export const ruPosts = [
+  post2RU,
+  post1RU,
+];
+
+export async function getStaticProps(context: any) {
+  // extract the locale identifier from the URL
+  const { locale } = context
+
+  const posts = locale === "en" ? enPosts : ruPosts;
+
+  return {
+    props: {
+      posts: JSON.parse(JSON.stringify(posts)),
+      // pass the translation props to the page component
+      ...(await serverSideTranslations(locale)),
+    },
+  }
+}
+
 // structuring data like a pro, leading social media like a lame cave person.
 
-export default function Blog() {
+export default function Blog({ posts }: { posts: any[] }) {
+  const { t } = useTranslation();
   const [ selectedCategory, setSelectedCategory ] = useState<string>('all');
+
+  const categories = [
+    { value: 'all', title: t("blog.category.all") },
+    { value: 'startups', title: t("blog.category.startups") },
+    { value: 'dev', title: t("blog.category.dev") },
+    // { value: 'immigration', title: 'Immigration'},
+    { value: 'lifeStuff', title: t("blog.category.life") },
+    { value: 'projects', title: t("blog.category.projects") },
+    { value: 'other', title: t("blog.category.other") },
+  ];
 
   const filteredPosts = selectedCategory !== 'all'
     ? posts.filter(post => post.postPreview.type === selectedCategory)
@@ -67,8 +92,8 @@ export default function Blog() {
 
       <main className={styles.main}>
         <section className={styles.header}>
-          <h1>Blog (aka brain dump, sometimes useful)</h1>
-          <p>Notes on building startups, software engineering, immigration, and life stuff.</p>
+          <h1>{t("blog.title")}</h1>
+          <p>{t("blog.subtitle")}</p>
         </section>
 
         <div className={styles.categorySwitch}>

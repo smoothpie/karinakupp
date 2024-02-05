@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head'
 import Image from 'next/image';
-import { posts } from '.';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { enPosts, ruPosts } from '.';
 import Link from '@/components/Link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -30,19 +31,25 @@ type PostInfo = {
 
 export async function getStaticProps(props: any) {
   const postId = props.params!.postId as string;
+  const { locale } = props;
 
   return {
     props: {
       postId: postId,
+      ...(await serverSideTranslations(locale)),
     },
     revalidate: 180
   }
 }
 
 export async function getStaticPaths() {
-  const paths = posts.map((post) => ({
-    params: { postId: post.postPreview.slug },
-  }))
+  const posts = [...enPosts, ...ruPosts];
+  const paths = posts.map((post) => {
+    return [
+      { params: { postId: post.postPreview.slug }, locale: 'en' },
+      { params: { postId: post.postPreview.slug }, locale: 'ru' },
+    ]
+  }).flat();
 
   return { paths, fallback: false }
 }
@@ -50,6 +57,8 @@ export async function getStaticPaths() {
 export default function Post(props : any) {
   const router = useRouter();
   const { postId } = props;
+  const { locale } = router;
+  const posts = locale === "en" ? enPosts : ruPosts;
   const currentPost: any = posts.find(p => p.postPreview.slug === postId);
 
   // let disqusConfig: any = {

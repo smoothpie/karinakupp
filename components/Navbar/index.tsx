@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import Link from '@/components/Link'
-import styles from './Navbar.module.css'
+import Select from '@/components/Select'
+import s from './Navbar.module.css'
 
 export default function Navbar() {
+  const { t, i18n } = useTranslation()
+  const router = useRouter()
+  const { pathname, asPath, query, locale } = router;
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -17,36 +23,64 @@ export default function Navbar() {
 
   console.log(isBurgerMenuOpen)
 
+  const handleLanguageChange = (langValue: string) => {
+    router.push({ pathname, query }, asPath, { locale: langValue });
+
+    router.events.on('routeChangeComplete', () => {
+      router.reload()
+    });
+  };
+
+  const languageOptions = [
+    { label: 'EN', value: 'en' },
+    { label: 'RU', value: 'ru' },
+  ];
+
+  const languageSwitch = (
+    <div className={s.languageSwitch} onClick={() => handleLanguageChange(locale === "en" ? "ru": "en")}>
+      {locale === 'en' ? 'RU' : 'EN'}
+    </div>
+  );
+
   return (
-    <nav className={styles.container}>
+    <nav className={s.container}>
       <Link href="/">
-        <div className={styles.logo}>
-          Karina Kupp [Kupryianovich]
+        <div className={s.logo}>
+          {t("navbar.home")}
         </div>
       </Link>
-      <div className={styles.links}>
-        <Link href="/about">About</Link>
-        <Link href="/blog">Blog</Link>
+      <div className={s.links}>
+        {/* <Select
+          options={languageOptions}
+          selectedOption={languageOptions.find(option => option.value === locale)}
+          onChange={(value: string) => handleLanguageChange(value)}
+        /> */}
+        {languageSwitch}
+        <Link href="/about">{t("navbar.about")}</Link>
+        <Link href="/blog">{t("navbar.blog")}</Link>
         {/* <Link href="/dump">Brain dump</Link> */}
-        <Link href="/projects">Projects // Dev</Link>
+        <Link href="/projects">{t("navbar.projects")}</Link>
         {/* <Link href="/music">Music</Link>
         <Link href="/writing">Writing</Link> */}
         {/* <Link href="/favorites">Favorites</Link>
         <Link href="/misc">Misc</Link> */}
       </div>
 
-      <div className={styles.burgerMenuContainer}>
+      <div className={s.burgerMenuContainer}>
         <input type="checkbox" onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)} />
         
         <span></span>
         <span></span>
         <span></span>
         
-        <ul className={styles.burgerMenu}>
+        <ul className={s.burgerMenu}>
           <Link href="/"><li>Home</li></Link>
           <Link href="/about"><li>About</li></Link>
           <Link href="/blog"><li>Blog</li></Link>
           <Link href="/projects"><li>Projects</li></Link>
+          <div className={s.languageSwitchContainer}>
+            {languageSwitch}
+          </div>
         </ul>
       </div>
     </nav>

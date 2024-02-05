@@ -1,0 +1,25 @@
+{
+  "home.title": "Hi! I'm Karina. I build <a href=\"https://chillsubs.com/\" target=\"_blank\">Chill Subs</a>, <a href=\"https://open.spotify.com/artist/26gsov9eryBnS3qdUTsoWK?si=MYOTxnotTUKcwk9pJ7599A\" target=\"_blank\">write sad songs</a> and constantly brainstorm ideas <br/>I don't really have time for.",
+  "home.subtitle.part1": "I'm a software engineer with 6 years of experience. I spent 3 years building mostly MVPs for startups at an outsourcing company, then left and did some freelance (like making a medical tourism platform...during a global pandemic), and in 2022, launched <a href=\"https://chillsubs.com/\" target=\"_blank\">Chill Subs</a> - a website helping writers get published that now has almost 20,000 registered users and is reimagining the writing industry every day.",
+  "home.subtitle.part2": "Now I'm trying to beat my impostor syndrom and share the things I've learned in my blog.",
+  "home.smallText": "// Sometimes, I look out the window and think that wasting one's life is impossible. It's here after all, it's yours, you're living it! Other times, I go on Twitter and every single person seems to be doing more than me. Then I get up and create a personal website. Then I think it's all stupid. //",
+  
+  "navbar.home": "Karina Kupp [Kupryianovich]",
+  "navbar.about": "About",
+  "navbar.blog": "Blog",
+  "navbar.projects": "Projects // Dev",
+
+  "blog.title": "Blog (aka brain dump, sometimes useful)",
+  "blog.subtitle": "Notes on building startups, software engineering, immigration, and life stuff.",
+
+  "blog.category.all": "All",
+  "blog.category.startups": "Startups",
+  "blog.category.dev": "Dev",
+  "blog.category.life": "Life stuff",
+  "blog.category.projects": "My old projects",
+  "blog.category.other": "Other",
+
+  "about.title": "Helllooooo, can't wait to make this about me",
+  "about.subtitle": "I'm Karina. I write sad songs and build Chill Subs.",
+  "about.bio": "You can typically find me creating yet another Spotify playlist, buying tickets to the other side of the world to see Carissa's Wierd reunion, or being angry I can't clone myself to work on 248582 ideas at the same time. Nice to meet you! Please be my friend and make me go outside."
+}
