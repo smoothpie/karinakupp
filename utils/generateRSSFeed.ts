@@ -30,12 +30,12 @@ export default async function generateRssFeed() {
     author,
   });
   posts.forEach((post) => {
-    const url = `${siteURL}/blog-mdx/${post.meta.slug}`;
+    const url = post.meta.link.includes("http") ? post.meta.link : `${siteURL}/blog/${post.meta.link}`;
     feed.addItem({
       title: post.meta.title,
       id: url,
       link: url,
-      description: post.meta.description,
+      description: post.meta.excerpt,
       content: post.content,
       author: [author],
       contributor: [author],
@@ -74,12 +74,12 @@ export default async function generateRssFeed() {
     author,
   });
   postsRU.forEach((post) => {
-    const url = `${siteURL}/blog-mdx/${post.meta.slug}`;
-    feedRU.addItem({
+    const url = post.meta.link.includes("http") ? post.meta.link : `${siteURL}/blog/${post.meta.link}`;
+    feed.addItem({
       title: post.meta.title,
       id: url,
       link: url,
-      description: post.meta.description,
+      description: post.meta.excerpt,
       content: post.content,
       author: [authorRU],
       contributor: [authorRU],
