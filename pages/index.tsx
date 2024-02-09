@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import generateRssFeed from '@/utils/generateRSSFeed'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SEO from '@/components/SEO'
@@ -15,6 +16,8 @@ const inter = Inter({ subsets: ['latin', ] })
 export async function getStaticProps(context: any) {
   // extract the locale identifier from the URL
   const { locale } = context
+
+  await generateRssFeed();
 
   return {
     props: {

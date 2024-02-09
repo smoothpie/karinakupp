@@ -3,6 +3,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import { format } from 'date-fns'
+import { RxExternalLink } from "react-icons/rx";
+import { getAllPosts, PostMeta } from "@/lib/blog";
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from '@/components/Link'
@@ -27,7 +30,9 @@ export async function getStaticProps(context: any) {
   // extract the locale identifier from the URL
   const { locale } = context
 
-  const posts = locale === "en" ? enPosts : ruPosts;
+  const posts = getAllPosts(locale);
+
+  // const posts = locale === "en" ? enPosts : ruPosts;
 
   return {
     props: {
@@ -49,32 +54,37 @@ export default function Blog({ posts }: { posts: any[] }) {
     { value: 'startups', title: t("blog.category.startups") },
     { value: 'dev', title: t("blog.category.dev") },
     // { value: 'immigration', title: 'Immigration'},
-    { value: 'lifeStuff', title: t("blog.category.life") },
-    { value: 'projects', title: t("blog.category.projects") },
-    { value: 'other', title: t("blog.category.other") },
+    { value: 'life', title: t("blog.category.life") },
+    // { value: 'projects', title: t("blog.category.projects") },
+    // { value: 'other', title: t("blog.category.other") },
   ];
 
   const filteredPosts = selectedCategory !== 'all'
-    ? posts.filter(post => post.postPreview.type === selectedCategory)
+    ? posts.filter(post => post.meta.type === selectedCategory)
     : posts;
 
   const numberOfPostsInEachCategory = categories.map(category => {
-    const postsInCategory = posts.filter(post => post.postPreview.type === category.value);
+    const postsInCategory = posts.filter(post => post.meta.type === category.value);
     return { category: category.value, count: postsInCategory.length };
   })
 
-  const EntryCard = ({ post }: any) => (
+  const EntryCard = ({ post, isExternal }: any) => (
     <article className={styles.card}>
-      <div className={styles.cardImage}>
-        <Image src={post.postPreview.cover} fill alt={`Post cover: ${post.postPreview.title}`} />
-      </div>
+      {/* <div className={styles.cardImage}>
+        <Image src={post.meta?.cover} fill alt={`Post cover: ${post.meta.title}`} />
+      </div> */}
       <div className={styles.cardInfo}>
         <div className={styles.cardInfoTop}>
-          <div className={styles.cardDate}>{post.postPreview.date}</div>
           {/* <div className={styles.infoDivider}>|</div>
           <div className={styles.cardAuthor}>Karina Kupp</div> */}
         </div>
-        <h2 className={styles.cardTitle}>{post.postPreview.titleDiv || post.postPreview.title}</h2>
+        <h2 className={styles.cardTitle}>
+          {post.meta.titleDiv || post.meta.title}{' '}
+          {isExternal && <RxExternalLink />}
+        </h2>
+        <p>{post.meta.excerpt}</p>
+        <div className={styles.cardDate}>{format(post.meta.date, "MMM dd, yyyy")}</div>
+        {/* <p className={styles.type}># {categories.find(c => c.value === post.meta.type)?.title}</p> */}
       </div>
     </article>
   )
@@ -111,12 +121,12 @@ export default function Blog({ posts }: { posts: any[] }) {
 
         <div className={styles.cards}>
           {filteredPosts.map(post => (
-            post.postPreview.slug.includes("https") ? (
-              <a href={post.postPreview.slug} key={post.postPreview.slug} aria-label={post.postPreview.title} target="_blank">
-                <EntryCard post={post} />
+            post.meta.link?.includes("https") ? (
+              <a href={post.meta.link} key={post.meta.link} aria-label={post.meta.title} target="_blank">
+                <EntryCard post={post} isExternal />
               </a>
             ) : (
-              <Link href={`/blog/${post.postPreview.slug}`} key={post.postPreview.slug} aria-label={post.postPreview.title}>
+              <Link href={`/blog/${post.meta.link}`} key={post.meta.link} aria-label={post.meta.title}>
                 <EntryCard post={post} />
               </Link>
             )

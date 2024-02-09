@@ -16,8 +16,9 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"],
+      "react": [ "./node_modules/@types/react" ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/**/*", "src/**/*",],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/**/*", "src/**/*", "data/blog/en/index.mdx",],
   "exclude": ["node_modules"]
 }

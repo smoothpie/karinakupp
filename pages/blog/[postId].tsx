@@ -1,48 +1,55 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Head from 'next/head'
-import Image from 'next/image';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import * as React from 'react'
+import type { GetStaticProps, GetStaticPaths } from "next";
+import Image from "next/image"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeHighlight from "rehype-highlight";
+import { format } from 'date-fns'
+import { getPostFromSlug, getSlugs, PostMeta } from "@/lib/blog";
 import { enPosts, ruPosts } from '.';
+import "highlight.js/styles/atom-one-dark.css";
 import Link from '@/components/Link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
-import styles from './Post.module.css'
+import s from './Post.module.css'
 
-type PostPreview = {
-  slug: string,
-  date: string,
-  author: string,
-  metaImage: string,
-  cover: string,
-  title: string,
-  titleDiv?: any,
-  previewText: string,
-  blurb?: any,
-  links?: any[],
-  type: string;
+interface MDXPost {
+  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+  meta: PostMeta;
 }
 
-type PostInfo = {
-  content: any,
-  postPreview: PostPreview,
-}
-
-export async function getStaticProps(props: any) {
-  const postId = props.params!.postId as string;
-  const { locale } = props;
+export async function getStaticProps(context: any) {
+  const { locale } = context;
+  const { postId } = context.params as { postId: string };
+  const { content, meta } = getPostFromSlug(postId, locale);
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      rehypePlugins: [
+        rehypeSlug,
+        [rehypeAutolinkHeadings, { behavior: "wrap" }],
+        rehypeHighlight as any,
+      ],
+    },
+  });
 
   return {
     props: {
-      postId: postId,
+      post: { source: mdxSource, meta },
       ...(await serverSideTranslations(locale)),
-    },
-    revalidate: 180
-  }
+    }
+  };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async (context: any) => {
+  // const { locale } = context;
+  // const enPosts = getSlugs("en").map((slug) => ({ params: { slug } }));
+  // const ruPosts = getSlugs("ru").map((slug) => ({ params: { slug } }));
+  // const paths = [...enPosts, ...ruPosts];
+
   const posts = [...enPosts, ...ruPosts];
   const paths = posts.map((post) => {
     return [
@@ -52,53 +59,39 @@ export async function getStaticPaths() {
   }).flat();
 
   return { paths, fallback: false }
-}
 
-export default function Post(props : any) {
-  const router = useRouter();
-  const { postId } = props;
-  const { locale } = router;
-  const posts = locale === "en" ? enPosts : ruPosts;
-  const currentPost: any = posts.find(p => p.postPreview.slug === postId);
+  // return {
+  //   paths,
+  //   fallback: false,
+  // };
+};
 
-  // let disqusConfig: any = {
-  //   url: `${clientOrigin}/blog/${postId}`,
-  //   identifier: postId, // Single post id
-  //   title: currentPost?.postPreview?.title // Single post title
-  // }
-  // const disqusShortname = 'chillsubs';
-
-  if (!currentPost) return null;
-
+function Post({ post }: { post: MDXPost }) {
+  console.log(post.meta)
   return (
-    <div className={styles.container}>
+    <div className={s.container}>
       <SEO
-        title={currentPost.postPreview.title}
-        description={currentPost.postPreview.previewText}
-        image={currentPost.postPreview.metaImage}
-        url={`https://www.karinakupp.com/blog/${postId}`}
+        title={post.meta.title}
+        description={post.meta.previewText}
+        image={post.meta.metaImage}
+        url={`https://www.karinakupp.com/blog/${post.meta.slug}`}
       />
 
       <Navbar />
 
-      <main className={styles.main}>
-        <div className={styles.post}>
+      <main className={s.main}>
+        <div className={s.post}>
           <header>
-            <div className={styles.postDate}>
-              {currentPost.postPreview.date}
+            <h1 className={s.postTitle}>{post.meta.title}</h1>
+            <div className={s.postDate}>
+              {format(post.meta.date, "MMMM dd, yyyy")}
             </div>
-            <h1 className={styles.postTitle}>{currentPost.postPreview.titleDiv || currentPost.postPreview.title}</h1>
-            <div className={styles.cover}>
-              <Image src={currentPost.postPreview.cover} fill alt={`Cover of ${currentPost.postPreview.title}`} />
-            </div>
+            {/* <div className={s.cover}>
+              <Image src={post.meta.cover} fill alt={`Cover of ${post.meta.title}`} />
+            </div> */}
           </header>
-          <article className={styles.contentAndBio}>
-            <div className={styles.content}>
-              {currentPost.postPreview.blurb && (
-                <div className={styles.blurb}>{currentPost.postPreview.blurb}</div>
-              )}
-              {currentPost.content}
-            </div>
+          <article className={s.content}>
+            <MDXRemote {...post.source} components={{ Image }} />
           </article>
           {/* <DiscussionEmbed
             shortname={disqusShortname}
@@ -111,3 +104,5 @@ export default function Post(props : any) {
     </div>
   )
 }
+
+export default Post

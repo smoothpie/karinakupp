@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -8,6 +9,18 @@ import SEO from '@/components/SEO'
 import styles from '@/styles/Projects.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export async function getStaticProps(context: any) {
+  // extract the locale identifier from the URL
+  const { locale } = context
+
+  return {
+    props: {
+      // pass the translation props to the page component
+      ...(await serverSideTranslations(locale)),
+    },
+  }
+}
 
 export default function Projects() {
   const [ mode, setMode ] = useState<string>('own');
