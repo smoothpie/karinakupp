@@ -50,11 +50,14 @@ export const getStaticPaths: GetStaticPaths = async (context: any) => {
   // const ruPosts = getSlugs("ru").map((slug) => ({ params: { slug } }));
   // const paths = [...enPosts, ...ruPosts];
 
+  const enPosts = (await getSlugs("en")).map((slug) => ({ params: { slug } }))
+  const ruPosts = (await getSlugs("ru")).map((slug) => ({ params: { slug } }))
+
   const posts = [...enPosts, ...ruPosts];
   const paths = posts.map((post) => {
     return [
-      { params: { postId: post.postPreview.slug }, locale: 'en' },
-      { params: { postId: post.postPreview.slug }, locale: 'ru' },
+      { params: { postId: post.params.slug }, locale: 'en' },
+      { params: { postId: post.params.slug }, locale: 'ru' },
     ]
   }).flat();
 
@@ -74,7 +77,7 @@ function Post({ post }: { post: MDXPost }) {
         title={post.meta.title}
         description={post.meta.excerpt}
         image={post.meta.metaImage}
-        url={`https://www.karinakupp.com/blog/${post.meta.link}`}
+        url={post.meta.link.includes("http") ? post.meta.link : `https://www.karinakupp.com/blog/${post.meta.link}`}
       />
 
       <Navbar />

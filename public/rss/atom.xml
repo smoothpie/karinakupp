@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://karinakupp.com</id>
     <title>Karina Kupp blog</title>
-    <updated>2024-02-09T21:46:23.670Z</updated>
+    <updated>2024-02-09T22:02:20.360Z</updated>
     <generator>Feed for Node.js</generator>
     <author>
         <name>Karina Kupp</name>
@@ -16,9 +16,10 @@
     <rights>All rights reserved 2024, Karina Kupp</rights>
     <entry>
         <title type="html"><![CDATA[Working with Google Sheets in Your Next.js App]]></title>
-        <id>https://karinakupp.com/blog-mdx/undefined</id>
-        <link href="https://karinakupp.com/blog-mdx/undefined"/>
+        <id>https://levelup.gitconnected.com/using-google-sheets-as-another-database-in-your-next-js-app-ab1b2c6d8f1a</id>
+        <link href="https://levelup.gitconnected.com/using-google-sheets-as-another-database-in-your-next-js-app-ab1b2c6d8f1a"/>
         <updated>2024-01-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to read from the spreadsheet, update individual values or create a new CSV with values from your database.]]></summary>
         <content type="html"><![CDATA[
 ]]></content>
         <author>
@@ -34,9 +35,10 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Who Am I and Why Am I Doing This?]]></title>
-        <id>https://karinakupp.com/blog-mdx/undefined</id>
-        <link href="https://karinakupp.com/blog-mdx/undefined"/>
+        <id>https://karinakupp.com/blog//why-am-i-doing-this</id>
+        <link href="https://karinakupp.com/blog//why-am-i-doing-this"/>
         <updated>2024-01-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Hi! I'm making my generous contribution to the internet by sharing notes on building successful projects while being anxious about 23 hours a day. Welcome!]]></summary>
         <content type="html"><![CDATA[
 Hey everyone! My project [Chill Subs](https://www.chillsubs.com) turned two years old this weekend and I thought I can’t keep making excuses not to share everything I learn while making it.
 
