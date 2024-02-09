@@ -72,9 +72,9 @@ function Post({ post }: { post: MDXPost }) {
     <div className={s.container}>
       <SEO
         title={post.meta.title}
-        description={post.meta.previewText}
+        description={post.meta.excerpt}
         image={post.meta.metaImage}
-        url={`https://www.karinakupp.com/blog/${post.meta.slug}`}
+        url={`https://www.karinakupp.com/blog/${post.meta.link}`}
       />
 
       <Navbar />
