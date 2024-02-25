@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://karinakupp.com</id>
     <title>Karina Kupp blog</title>
-    <updated>2024-02-09T22:02:20.360Z</updated>
+    <updated>2024-02-25T18:04:08.133Z</updated>
     <generator>Feed for Node.js</generator>
     <author>
         <name>Karina Kupp</name>
@@ -14,6 +14,44 @@
     <logo>https://karinakupp.com/karinakupp.jpeg</logo>
     <icon>https://karinakupp.com/favicon.ico</icon>
     <rights>All rights reserved 2024, Karina Kupp</rights>
+    <entry>
+        <title type="html"><![CDATA[React image upload with cropping, resizing and uploading to AWS S3]]></title>
+        <id>https://levelup.gitconnected.com/react-image-upload-with-cropping-resizing-and-uploading-to-aws-s3-447b27ae6acb</id>
+        <link href="https://levelup.gitconnected.com/react-image-upload-with-cropping-resizing-and-uploading-to-aws-s3-447b27ae6acb"/>
+        <updated>2024-02-21T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Today we’ll be talking about image upload. And not a simple one, but one that would support different dimensions, cropping, and uploading to an S3 bucket. Exciting!]]></summary>
+        <content type="html"><![CDATA[
+]]></content>
+        <author>
+            <name>Karina Kupp</name>
+            <email>karinakupp@gmail.com</email>
+            <uri>https://instagram.com/karinakupp</uri>
+        </author>
+        <contributor>
+            <name>Karina Kupp</name>
+            <email>karinakupp@gmail.com</email>
+            <uri>https://instagram.com/karinakupp</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[BREAKING NEWS: Chill Subs' Creator Feels Feelings]]></title>
+        <id>https://chillstartupdiary.substack.com/p/breaking-news-chill-subs-creator</id>
+        <link href="https://chillstartupdiary.substack.com/p/breaking-news-chill-subs-creator"/>
+        <updated>2024-02-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How I (try to) manage anxiety while running a startup with a reach of over 60,000 people and 6 team members and also not having a constant place to live]]></summary>
+        <content type="html"><![CDATA[
+]]></content>
+        <author>
+            <name>Karina Kupp</name>
+            <email>karinakupp@gmail.com</email>
+            <uri>https://instagram.com/karinakupp</uri>
+        </author>
+        <contributor>
+            <name>Karina Kupp</name>
+            <email>karinakupp@gmail.com</email>
+            <uri>https://instagram.com/karinakupp</uri>
+        </contributor>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Working with Google Sheets in Your Next.js App]]></title>
         <id>https://levelup.gitconnected.com/using-google-sheets-as-another-database-in-your-next-js-app-ab1b2c6d8f1a</id>

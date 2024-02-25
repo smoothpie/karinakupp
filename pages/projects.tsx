@@ -18,11 +18,12 @@ export async function getStaticProps(context: any) {
     props: {
       // pass the translation props to the page component
       ...(await serverSideTranslations(locale)),
+      locale,
     },
   }
 }
 
-export default function Projects() {
+export default function Projects({ locale }: any) {
   const [ mode, setMode ] = useState<string>('own');
 
   return (
@@ -39,10 +40,19 @@ export default function Projects() {
       <main className={styles.main}>
         {mode === 'own' && (
           <div className={mode ? styles.projects : styles.projectsHidden}>
+            {locale === "ru" && (
+              <a href="https://resident-bob.vercel.app/">
+                <div className={styles.project}>
+                  <div className={styles.img} />
+                  <h3>[2024 - now] resident bob (a searchable list of self-employed immigration opportunities)</h3>
+                </div>
+              </a>
+            )}
+
             <a href="https://www.chillsubs.com">
               <div className={styles.project}>
                 <div className={styles.img} />
-                <h3>[2022 - now] Chill Subs (I made a thing for writers. Now it has 10.000 users)</h3>
+                <h3>[2022 - now] Chill Subs (I made a thing for writers. Now it has 20.000 users)</h3>
               </div>
             </a>
 

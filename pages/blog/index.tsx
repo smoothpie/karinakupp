@@ -17,6 +17,7 @@ import post2RU from '@/data/blog/ru/2-google-sheets-tutorial';
 import styles from './Blog.module.css'
 
 export const enPosts = [
+  // post3,
   post2,
   post1,
 ];

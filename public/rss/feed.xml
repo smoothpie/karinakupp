@@ -4,7 +4,7 @@
         <title>Karina Kupp blog</title>
         <link>https://karinakupp.com</link>
         <description></description>
-        <lastBuildDate>Fri, 09 Feb 2024 22:02:20 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 25 Feb 2024 18:04:08 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -13,6 +13,26 @@
             <link>https://karinakupp.com</link>
         </image>
         <copyright>All rights reserved 2024, Karina Kupp</copyright>
+        <item>
+            <title><![CDATA[React image upload with cropping, resizing and uploading to AWS S3]]></title>
+            <link>https://levelup.gitconnected.com/react-image-upload-with-cropping-resizing-and-uploading-to-aws-s3-447b27ae6acb</link>
+            <guid>https://levelup.gitconnected.com/react-image-upload-with-cropping-resizing-and-uploading-to-aws-s3-447b27ae6acb</guid>
+            <pubDate>Wed, 21 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Today we’ll be talking about image upload. And not a simple one, but one that would support different dimensions, cropping, and uploading to an S3 bucket. Exciting!]]></description>
+            <content:encoded><![CDATA[
+]]></content:encoded>
+            <author>karinakupp@gmail.com (Karina Kupp)</author>
+        </item>
+        <item>
+            <title><![CDATA[BREAKING NEWS: Chill Subs' Creator Feels Feelings]]></title>
+            <link>https://chillstartupdiary.substack.com/p/breaking-news-chill-subs-creator</link>
+            <guid>https://chillstartupdiary.substack.com/p/breaking-news-chill-subs-creator</guid>
+            <pubDate>Thu, 15 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[How I (try to) manage anxiety while running a startup with a reach of over 60,000 people and 6 team members and also not having a constant place to live]]></description>
+            <content:encoded><![CDATA[
+]]></content:encoded>
+            <author>karinakupp@gmail.com (Karina Kupp)</author>
+        </item>
         <item>
             <title><![CDATA[Working with Google Sheets in Your Next.js App]]></title>
             <link>https://levelup.gitconnected.com/using-google-sheets-as-another-database-in-your-next-js-app-ab1b2c6d8f1a</link>

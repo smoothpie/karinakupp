@@ -10,6 +10,30 @@
     },
     "items": [
         {
+            "id": "https://levelup.gitconnected.com/react-image-upload-with-cropping-resizing-and-uploading-to-aws-s3-447b27ae6acb",
+            "content_html": "\n",
+            "url": "https://levelup.gitconnected.com/react-image-upload-with-cropping-resizing-and-uploading-to-aws-s3-447b27ae6acb",
+            "title": "React image upload with cropping, resizing and uploading to AWS S3",
+            "summary": "Today we’ll be talking about image upload. And not a simple one, but one that would support different dimensions, cropping, and uploading to an S3 bucket. Exciting!",
+            "date_modified": "2024-02-21T00:00:00.000Z",
+            "author": {
+                "name": "Karina Kupp",
+                "url": "https://instagram.com/karinakupp"
+            }
+        },
+        {
+            "id": "https://chillstartupdiary.substack.com/p/breaking-news-chill-subs-creator",
+            "content_html": "\n",
+            "url": "https://chillstartupdiary.substack.com/p/breaking-news-chill-subs-creator",
+            "title": "BREAKING NEWS: Chill Subs' Creator Feels Feelings",
+            "summary": "How I (try to) manage anxiety while running a startup with a reach of over 60,000 people and 6 team members and also not having a constant place to live",
+            "date_modified": "2024-02-15T00:00:00.000Z",
+            "author": {
+                "name": "Karina Kupp",
+                "url": "https://instagram.com/karinakupp"
+            }
+        },
+        {
             "id": "https://levelup.gitconnected.com/using-google-sheets-as-another-database-in-your-next-js-app-ab1b2c6d8f1a",
             "content_html": "\n",
             "url": "https://levelup.gitconnected.com/using-google-sheets-as-another-database-in-your-next-js-app-ab1b2c6d8f1a",
